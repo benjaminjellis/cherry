@@ -1,3 +1,9 @@
-# 🍒 cherry 🍒
+<p align="center">
+  <img src="assets/cherry_logo.png" width="300" height ="100">
+</p>
 
-cherry is a lightweight app for recording home brewing coffee experiments 
+<p align="center">
+
+</p>
+
+cherry is a logbook app for recording home brewing coffee experiments 
