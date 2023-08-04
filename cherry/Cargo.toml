@@ -9,7 +9,12 @@ edition = "2021"
 axum = "0.6.20"
 async-graphql = { version = "6.0.1", features = ["uuid", "chrono"] }
 async-graphql-axum = "6.0.1"
+chrono = { version = "0.4.26", features = ["serde"] }
 tokio = { version = "1.29.1", features = ["full"] }
 tracing = "0.1.37"
 slab = "0.4.8"
+serde = { version = "1.0.181", features = ["derive"] }
 uuid = { version = "1.4.1", features = ["v4"] }
+eyre = "0.6.8"
+serde_json = "1.0.104"
+ciborium = "0.2.1"
