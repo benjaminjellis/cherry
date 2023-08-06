@@ -15,6 +15,7 @@ use axum::{extract::Extension, routing::get, Router, Server};
 use server_utils::shutdown_signal;
 use std::{net::SocketAddr, sync::Arc};
 use tokio::sync::RwLock;
+use tower_http::cors::CorsLayer;
 
 #[tokio::main]
 async fn main() -> eyre::Result<()> {
@@ -23,10 +24,13 @@ async fn main() -> eyre::Result<()> {
         .data(data.clone())
         .finish();
 
+    let cors = CorsLayer::permissive();
+
     let app = Router::new()
         .route("/", get(graphiql).post(graphql_handler))
         .route("/health_check", get(health_check))
-        .layer(Extension(schema));
+        .layer(Extension(schema))
+        .layer(cors);
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 8000));
 

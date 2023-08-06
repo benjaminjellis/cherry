@@ -1,4 +1,4 @@
-use async_graphql::{Enum, Object, Result, ID};
+use async_graphql::{Object, Result, ID};
 use chrono::NaiveDate;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -10,21 +10,15 @@ pub(crate) struct CoffeeData {
     pub(crate) id: Uuid,
     pub(crate) name: String,
     pub(crate) roaster: String,
-    pub(crate) process: Process,
+    pub(crate) process: String,
+    pub(crate) varietal: String,
+    pub(crate) country: String,
     pub(crate) grower: Option<String>,
-    pub(crate) description: String,
+    pub(crate) farm: String,
+    pub(crate) tasting_notes: String,
     pub(crate) roast_date: NaiveDate,
     pub(crate) experiments: Vec<ExperimentData>,
     pub(crate) is_finished: bool,
-}
-
-#[derive(Enum, Copy, Clone, Eq, PartialEq, Serialize, Deserialize)]
-pub(crate) enum Process {
-    Natural,
-    NaturalAnerobic,
-    Washed,
-    Honey,
-    CarbonicMaceration,
 }
 
 #[Object]
@@ -33,12 +27,24 @@ impl CoffeeData {
         Ok(self.id.try_into()?)
     }
 
+    async fn country(&self) -> &String {
+        &self.country
+    }
+
+    async fn farm(&self) -> &String {
+        &self.farm
+    }
+
+    async fn varietal(&self) -> &String {
+        &self.varietal
+    }
+
     async fn name(&self) -> &String {
         &self.name
     }
 
-    async fn description(&self) -> &String {
-        &self.description
+    async fn tasting_notes(&self) -> &String {
+        &self.tasting_notes
     }
 
     async fn grower(&self) -> &Option<String> {
@@ -49,7 +55,7 @@ impl CoffeeData {
         &self.roaster
     }
 
-    async fn process(&self) -> &Process {
+    async fn process(&self) -> &String {
         &self.process
     }
 
@@ -69,5 +75,18 @@ impl CoffeeData {
 impl CoffeeData {
     pub(super) fn add_new_experiment(&mut self, new_experiment: ExperimentData) {
         self.experiments.push(new_experiment);
+    }
+
+    pub(super) fn delete_experiment(&mut self, experiment_id: Uuid) -> eyre::Result<()> {
+        let experiment_idx = self
+            .experiments
+            .iter()
+            .position(|experiment| experiment.id == experiment_id);
+
+        let Some(idx) = experiment_idx else {
+            return Err(eyre::eyre!("No experiment with id: {experiment_id} found fo this coffee"))
+        };
+        _ = self.experiments.remove(idx);
+        Ok(())
     }
 }

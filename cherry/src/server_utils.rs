@@ -4,6 +4,8 @@ use tokio::{signal, sync::RwLock};
 
 use crate::{db::write_date_to_disk, model::CherryData};
 
+/// Listen for terminate or ctl + c signals and shutdown the server if they are
+/// sent. When shuting down we save the data to disk.
 pub(crate) async fn shutdown_signal(data: Arc<RwLock<CherryData>>) {
     let ctrl_c = async {
         signal::ctrl_c()
@@ -27,5 +29,5 @@ pub(crate) async fn shutdown_signal(data: Arc<RwLock<CherryData>>) {
         _ = terminate => {},
     }
 
-    write_date_to_disk(&*data.read().await).unwrap();
+    write_date_to_disk(&*data.read().await).expect("Failed to write data to disk");
 }

@@ -7,10 +7,13 @@ use uuid::Uuid;
 pub(crate) struct ExperimentData {
     pub(crate) id: Uuid,
     pub(crate) date: NaiveDate,
-    pub(crate) dripper: String,
+    pub(crate) dose: u8,
+    pub(crate) water_dose: u16,
+    pub(crate) brewer: String,
     pub(crate) filter: String,
     pub(crate) water: String,
     pub(crate) water_temp: u8,
+    pub(crate) pour_structure: String,
     pub(crate) grinder: String,
     pub(crate) grind_setting: String,
     pub(crate) rdt: bool,
@@ -23,12 +26,20 @@ impl ExperimentData {
         Ok(self.id.try_into()?)
     }
 
+    async fn dose(&self) -> u8 {
+        self.dose
+    }
+
+    async fn water_dose(&self) -> u16 {
+        self.water_dose
+    }
+
     async fn date(&self) -> NaiveDate {
         self.date
     }
 
-    async fn dripper(&self) -> &String {
-        &self.dripper
+    async fn brewer(&self) -> &String {
+        &self.brewer
     }
 
     async fn filter(&self) -> &String {
@@ -57,5 +68,9 @@ impl ExperimentData {
 
     async fn notes(&self) -> &String {
         &self.notes
+    }
+
+    async fn pour_structure(&self) -> &String {
+        &self.pour_structure
     }
 }

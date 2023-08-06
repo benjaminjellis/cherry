@@ -15,8 +15,35 @@ impl QueryRoot {
         Ok(coffees.get_coffee_by_id(id.try_into()?).cloned())
     }
 
-    async fn coffees(&self, ctx: &Context<'_>) -> Result<Vec<CoffeeData>> {
+    async fn coffees(
+        &self,
+        ctx: &Context<'_>,
+        #[graphql(desc = "Filter coffees by whether they've been marked as finished or not")]
+        is_finished: Option<bool>,
+    ) -> Result<Vec<CoffeeData>> {
+        dbg!("getting coffees!");
         let coffees = ctx.data::<CherryDataStorage>()?.read().await;
-        Ok(coffees.coffees.clone())
+
+        let Some(is_finished ) = is_finished else{
+            return Ok(coffees.coffees.clone());
+        };
+
+        if is_finished {
+            let filtered_coffees = coffees
+                .coffees
+                .clone()
+                .into_iter()
+                .filter(|coffee| coffee.is_finished)
+                .collect::<Vec<_>>();
+            Ok(filtered_coffees)
+        } else {
+            let filtered_coffees = coffees
+                .coffees
+                .clone()
+                .into_iter()
+                .filter(|coffee| !coffee.is_finished)
+                .collect::<Vec<_>>();
+            Ok(filtered_coffees)
+        }
     }
 }
