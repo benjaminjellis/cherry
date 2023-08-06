@@ -1,0 +1,55 @@
+<h1>{{coffeeData.name}}</h1>
+
+<c-card class="mb-4">
+    <c-card-body>
+        <c-row>
+            <c-col sm="5">
+                <h4 class="card-title mb-0" id="traffic">Experiments</h4>
+            </c-col>
+            <table [hover]="true" [striped]="true" cTable>
+                <thead>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Brewer</th>
+                        <th scope="col">Filter</th>
+                        <th scope="col">Dose (g)</th>
+                        <th scope="col">Water Dose (g)</th>
+                        <th scope="col">Water</th>
+                        <th scope="col">Water Temperature (C)</th>
+                        <th scope="col">Grinder</th>
+                        <th scope="col">Grind Setting</th>
+                        <th scope="col">Pour Structure</th>
+                        <th scope="col">Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickable" *ngFor="let experiment of coffeeData.experiments">
+                        <td>{{experiment.date}}</td>
+                        <td>{{experiment.brewer}}</td>
+                        <td>{{experiment.filter}}</td>
+                        <td>{{experiment.dose}}</td>
+                        <td>{{experiment.waterDose}}</td>
+                        <td>{{experiment.water}}</td>
+                        <td>{{experiment.waterTemp}}</td>
+                        <td>{{experiment.grinder}}</td>
+                        <td>{{experiment.grindSetting}}</td>
+                        <td>{{experiment.pourStructure}}</td>
+                        <td>{{experiment.notes}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </c-row>
+    </c-card-body>
+</c-card>
+<c-button-group aria-label="Basic mixed styles example" role="group">
+    <button cButton color="primary">Add new experiment</button>
+    <button (click)="markCoffeeAsFinished()" cButton color="warning">Mark as finished</button>
+    <c-dropdown>
+        <button cButton cDropdownToggle color="danger">
+            Delete coffee
+        </button>
+        <ul cDropdownMenu>
+            <li><a (click)="deleteCoffee()" cDropdownItem>Delete</a></li>
+        </ul>
+    </c-dropdown>
+</c-button-group>

@@ -1,0 +1,37 @@
+<c-card class="mb-4">
+    <c-card-body>
+        <c-row>
+            <c-col sm="5">
+                <h4 class="card-title mb-0" id="traffic">Coffees In Your Current Rotation</h4>
+            </c-col>
+            <table [hover]="true" [striped]="true" cTable>
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Roaster</th>
+                        <th scope="col">Process</th>
+                        <th scope="col">Grower</th>
+                        <th scope="col">Varietal</th>
+                        <th scope="col">Farm</th>
+                        <th scope="col">Roast Date</th>
+                        <th scope="col">Tasting Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickable" *ngFor="let coffee of coffees" [routerLink]="['/experiments']"
+                        [queryParams]="{ coffeeId: coffee.id }">
+                        <td>{{coffee.name}}</td>
+                        <td>{{coffee.roaster}}</td>
+                        <td>{{coffee.process}}</td>
+                        <td>{{coffee.grower}}</td>
+                        <td>{{coffee.varietal}}</td>
+                        <td>{{coffee.farm}}</td>
+                        <td>{{coffee.roastDate}}</td>
+                        <td>{{coffee.tastingNotes}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </c-row>
+    </c-card-body>
+</c-card>
+<button cButton color="primary" [routerLink]="['/addNewCoffee']">Add new coffee to rotation</button>

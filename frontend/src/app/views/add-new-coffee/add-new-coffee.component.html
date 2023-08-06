@@ -1,0 +1,49 @@
+<form #browserDefaultsForm="ngForm" [formGroup]="addCoffeeForm" (ngSubmit)="onSubmit2()" [gutter]="3"
+    [validated]="browserDefaultsValidated" cForm cRow ngNativeValidate>
+    <c-col [md]="6" *ngIf="addCoffeeForm.controls['coffeeName'] as ctrl">
+        <label cLabel for="coffeeName">Name</label>
+        <input cFormControl formControlName="coffeeName" placeholder="e.g. Gesha Cloud" required id="coffeeName"
+            type="text" />
+    </c-col>
+    <c-col [md]="6" *ngIf="addCoffeeForm.controls['roaster'] as ctrl">
+        <label cLabel for="roaster">Roaster</label>
+        <input cFormControl formControlName="roaster" placeholder="e.g. Special Guests" required id="roaster"
+            type="text" />
+    </c-col>
+    <c-col [xs]="12" *ngIf="addCoffeeForm.controls['tastingNotes'] as ctrl">
+        <label cLabel for="tastingNotes">Tasting Notes</label>
+        <input cFormControl formControlName="tastingNotes" required id="tastingNotes"
+            placeholder="e.g. Notes of pineapple and strawberry with a floral finish. Medium to high weight and syrupy texture. "
+            type="text" />
+    </c-col>
+    <c-col [md]="6" *ngIf="addCoffeeForm.controls['varietal'] as ctrl">
+        <label cLabel for="varietal">Varietal</label>
+        <input cFormControl formControlName="varietal" placeholder="e.g. Gesha" required id="varietal" type="text" />
+    </c-col>
+    <c-col [md]="6" *ngIf="addCoffeeForm.controls['process']">
+        <label cLabel for=" process">Process</label>
+        <input cFormControl formControlName="process" placeholder="e.g. Anerobic Natural" required id="inputProcess"
+            type="text" />
+    </c-col>
+    <c-col [md]="6" *ngIf="addCoffeeForm.controls['grower']">
+        <label cLabel for="grower">Grower</label>
+        <input cFormControl formControlName="grower" placeholder="e.g. Milton Monroy" required id="grower"
+            type="text" />
+    </c-col>
+    <c-col [md]="6" *ngIf="addCoffeeForm.controls['country']">
+        <label cLabel for="country">Country of Origin</label>
+        <input cFormControl formControlName="country" placeholder="e.g. Colombia" required id="country" type="text" />
+    </c-col>
+    <c-col [md]="6" *ngIf="addCoffeeForm.controls['farm']">
+        <label cLabel for="farm">Farm</label>
+        <input cFormControl formControlName="farm" placeholder="e.g.  San Cayetano" required id="farm" type="text" />
+    </c-col>
+    <c-col [md]="6" *ngIf="addCoffeeForm.controls['roastDate']">
+        <label cLabel for="roastDate">Roast Date</label>
+        <input cFormControl formControlName="roastDate" placeholder="e.g. 2023-07-01" required id="roastDate"
+            type="text" />
+    </c-col>
+    <c-col>
+        <button cButton type="submit">Add Coffee</button>
+    </c-col>
+</form>
