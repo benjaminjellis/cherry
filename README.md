@@ -12,17 +12,17 @@ cherry is a logbook app for recording home brewing coffee experiments named afte
 
 Cherry can be used to track the coffees you're currently brewing
 
-<img src="assets/screenshots/current-rotation.png" width="800" height ="500">
+<img src="assets/screenshots/current-rotation.png" width="800" height ="550">
 
 You can add new coffees
 
-<img src="assets/screenshots/add-new-coffee.png" width="800" height ="500">
+<img src="assets/screenshots/add-new-coffee.png" width="800" height ="550">
 
 Cherry can also be used to track experiment with brewing so that you can track the impact variables have on each cup
 
-<img src="assets/screenshots/coffee-page.png" width="800" height ="500">
+<img src="assets/screenshots/coffee-page.png" width="800" height ="550">
 
-<img src="assets/screenshots/add-new-experiment.png" width="800" height ="500">
+<img src="assets/screenshots/add-new-experiment.png" width="800" height ="550">
 
 ## Installing 
 
