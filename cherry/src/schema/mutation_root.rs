@@ -73,7 +73,6 @@ impl MutationRoot {
         grinder: String,
         grind_setting: String,
         pour_structure: String,
-        rdt: bool,
         notes: String,
     ) -> Result<ID> {
         let new_experiment_id = Uuid::new_v4();
@@ -90,7 +89,6 @@ impl MutationRoot {
             pour_structure,
             grinder,
             grind_setting,
-            rdt,
             notes,
         };
         coffees.add_new_experiment(coffee_id.try_into()?, new_experiment)?;

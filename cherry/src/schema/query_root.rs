@@ -21,7 +21,6 @@ impl QueryRoot {
         #[graphql(desc = "Filter coffees by whether they've been marked as finished or not")]
         is_finished: Option<bool>,
     ) -> Result<Vec<CoffeeData>> {
-        dbg!("getting coffees!");
         let coffees = ctx.data::<CherryDataStorage>()?.read().await;
 
         let Some(is_finished ) = is_finished else{

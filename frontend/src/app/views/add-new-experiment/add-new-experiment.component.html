@@ -1,0 +1,64 @@
+<h2>
+    Add new experiment
+</h2>
+<h6>
+    {{coffeeName}}
+</h6>
+<form #browserDefaultsForm="ngForm" [formGroup]="addExperimentForm" (ngSubmit)="onSubmit2()" [gutter]="3"
+    [validated]="browserDefaultsValidated" cForm cRow ngNativeValidate>
+    <c-col [md]="4" *ngIf="addExperimentForm.controls['dose'] as ctrl">
+        <label cLabel for="dose">Dose (g)</label>
+        <input cFormControl formControlName="dose" placeholder="e.g. 12" required id="dose" type="number" />
+    </c-col>
+    <c-col [md]="4" *ngIf="addExperimentForm.controls['waterDose'] as ctrl">
+        <label cLabel for="waterDose">Water Dose (g)</label>
+        <input cFormControl formControlName="waterDose" placeholder="e.g. 200" required id="waterDose" type="number" />
+    </c-col>
+    <c-col [md]="4" *ngIf="addExperimentForm.controls['waterTemp'] as ctrl">
+        <label cLabel for="waterTemp">Water Temperature (C)</label>
+        <input cFormControl formControlName="waterTemp" placeholder="e.g. 92" required id="waterTemp" type="number" />
+    </c-col>
+    <c-col [xs]="6" *ngIf="addExperimentForm.controls['water'] as ctrl">
+        <label cLabel for="water">Water</label>
+        <input cFormControl formControlName="water" required id="water" placeholder="Tesco ashbeck" type="text" />
+    </c-col>
+    <c-col [md]="6" *ngIf="addExperimentForm.controls['brewer'] as ctrl">
+        <label cLabel for="brewer">Brewer</label>
+        <input cFormControl formControlName="brewer" placeholder="e.g. Orea V3" required id="brewer" type="text" />
+    </c-col>
+    <c-col [md]="6" *ngIf="addExperimentForm.controls['filter']">
+        <label cLabel for="filter">Filter</label>
+        <input cFormControl formControlName="filter" placeholder="e.g. Kalita wave 188 plastic bag" required id="filter"
+            type="text" />
+    </c-col>
+    <c-col [md]="6" *ngIf="addExperimentForm.controls['grinder']">
+        <label cLabel for="grinder">Grinder</label>
+        <input cFormControl formControlName="grinder" placeholder="e.g. Ccomandante C40 Mk4" required id="grinder"
+            type="text" />
+    </c-col>
+
+    <c-col [md]="6" *ngIf="addExperimentForm.controls['grindSetting']">
+        <label cLabel for="grindSetting">Grind Setting</label>
+        <input cFormControl formControlName="grindSetting" placeholder="e.g. 24" required id="grindSetting"
+            type="text" />
+    </c-col>
+    <c-col [md]="6" *ngIf="addExperimentForm.controls['date']">
+        <label cLabel for="date">Date</label>
+        <input cFormControl formControlName="date" placeholder="e.g. 2023-07-01" required id="date" type="text" />
+    </c-col>
+
+    <c-col [md]="12" *ngIf="addExperimentForm.controls['pourStructure']">
+        <label cLabel for="pourStructure">Pour Structure</label>
+        <input cFormControl formControlName="pourStructure"
+            placeholder="e.g. 40g bloom, 0:45 40g, 1:10 40g, 1:35 40g, 2:00 40g" required id="pourStructure"
+            type="text" />
+    </c-col>
+    <c-col [md]="12" *ngIf="addExperimentForm.controls['notes']">
+        <label cLabel for="notes">Notes</label>
+        <input cFormControl formControlName="notes" placeholder="Add your thoughts on the experiments" required
+            id="notes" type="text" />
+    </c-col>
+    <c-col>
+        <button cButton type="submit">Add experiment</button>
+    </c-col>
+</form>

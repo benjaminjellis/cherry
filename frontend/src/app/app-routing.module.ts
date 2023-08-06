@@ -10,7 +10,7 @@ import { RegisterComponent } from './views/pages/register/register.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'currentRotation',
     pathMatch: 'full'
   },
   {
@@ -20,11 +20,6 @@ const routes: Routes = [
       title: 'Home'
     },
     children: [
-      {
-        path: 'dashboard',
-        loadChildren: () =>
-          import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
-      },
       {
         path: 'currentRotation',
         loadChildren: () =>
@@ -46,44 +41,14 @@ const routes: Routes = [
           import('./views/add-new-coffee/add-new-coffee.module').then((m) => m.AddNewCoffeeModule)
       },
       {
-        path: 'theme',
+        path: 'addNewExperiment',
         loadChildren: () =>
-          import('./views/theme/theme.module').then((m) => m.ThemeModule)
-      },
-      {
-        path: 'base',
-        loadChildren: () =>
-          import('./views/base/base.module').then((m) => m.BaseModule)
-      },
-      {
-        path: 'buttons',
-        loadChildren: () =>
-          import('./views/buttons/buttons.module').then((m) => m.ButtonsModule)
-      },
-      {
-        path: 'forms',
-        loadChildren: () =>
-          import('./views/forms/forms.module').then((m) => m.CoreUIFormsModule)
-      },
-      {
-        path: 'charts',
-        loadChildren: () =>
-          import('./views/charts/charts.module').then((m) => m.ChartsModule)
-      },
-      {
-        path: 'icons',
-        loadChildren: () =>
-          import('./views/icons/icons.module').then((m) => m.IconsModule)
+          import('./views/add-new-experiment/add-new-experiment.module').then((m) => m.AddNewExperimentModule)
       },
       {
         path: 'notifications',
         loadChildren: () =>
           import('./views/notifications/notifications.module').then((m) => m.NotificationsModule)
-      },
-      {
-        path: 'widgets',
-        loadChildren: () =>
-          import('./views/widgets/widgets.module').then((m) => m.WidgetsModule)
       },
       {
         path: 'pages',

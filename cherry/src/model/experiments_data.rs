@@ -16,7 +16,6 @@ pub(crate) struct ExperimentData {
     pub(crate) pour_structure: String,
     pub(crate) grinder: String,
     pub(crate) grind_setting: String,
-    pub(crate) rdt: bool,
     pub(crate) notes: String,
 }
 
@@ -60,10 +59,6 @@ impl ExperimentData {
 
     async fn grind_setting(&self) -> &String {
         &self.grind_setting
-    }
-
-    async fn rdt(&self) -> bool {
-        self.rdt
     }
 
     async fn notes(&self) -> &String {

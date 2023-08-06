@@ -40,6 +40,7 @@ export class AllCoffeesComponent implements OnInit {
         this.apollo
             .watchQuery<any>({
                 query: GET_ALL_COFFEES,
+                fetchPolicy: "no-cache"
             })
             .valueChanges.subscribe(({ data, loading }) => {
                 this.loading = loading;

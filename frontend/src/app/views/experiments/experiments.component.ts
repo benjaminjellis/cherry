@@ -23,7 +23,6 @@ query GetExperimentsForCoffee($coffeeId: String){
             grinder, 
             grindSetting,
             pourStructure,
-            rdt,
             notes
         }
     }
@@ -64,7 +63,8 @@ export class ExperimentsComponent implements OnInit {
         this.apollo
             .watchQuery<any>({
                 query: GET_EXPERIMENTS_FOR_COFFEE,
-                variables: { coffeeId: this.coffeeId }
+                variables: { coffeeId: this.coffeeId },
+                fetchPolicy: "no-cache"
             })
             .valueChanges.subscribe(({ data }) => {
                 this.coffeeData = data.coffee;

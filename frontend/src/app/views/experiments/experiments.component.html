@@ -42,7 +42,10 @@
     </c-card-body>
 </c-card>
 <c-button-group aria-label="Basic mixed styles example" role="group">
-    <button cButton color="primary">Add new experiment</button>
+    <button cButton [routerLink]="['/addNewExperiment']"
+        [queryParams]="{ coffeeId: coffeeData.id, coffeeName: coffeeData.name }" color="primary">Add
+        new
+        experiment</button>
     <button (click)="markCoffeeAsFinished()" cButton color="warning">Mark as finished</button>
     <c-dropdown>
         <button cButton cDropdownToggle color="danger">
