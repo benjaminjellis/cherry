@@ -46,11 +46,6 @@ const routes: Routes = [
           import('./views/add-new-experiment/add-new-experiment.module').then((m) => m.AddNewExperimentModule)
       },
       {
-        path: 'notifications',
-        loadChildren: () =>
-          import('./views/notifications/notifications.module').then((m) => m.NotificationsModule)
-      },
-      {
         path: 'pages',
         loadChildren: () =>
           import('./views/pages/pages.module').then((m) => m.PagesModule)
