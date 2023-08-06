@@ -4,10 +4,10 @@ export const navItems: INavData[] = [
   {
     name: "Current Rotation",
     url: "/currentRotation",
-    iconComponent: { name: 'cilSpeedometer' }
+    // iconComponent: { name: 'cilSpeedometer' }
   },
   {
     name: "All Coffees",
     url: "/allCoffees",
-  } 
+  }
 ];
